@@ -1,7 +1,8 @@
-package com.karas.movies
+package com.karas.movies.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.karas.movies.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
