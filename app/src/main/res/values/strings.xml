@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">movies</string>
+    <string name="movie_card_share_action">Share</string>
+    <string name="movie_card_like_action">Like</string>
+    <string name="movie_card_unlike_action">Remove</string>
+    <string name="movie_card_rate_holder">Rating: %s</string>
 </resources>
