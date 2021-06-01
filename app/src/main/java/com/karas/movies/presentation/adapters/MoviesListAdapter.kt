@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.karas.movies.databinding.MovieItemBinding
+import com.karas.movies.db.pojo.MovieData
 import com.karas.movies.presentation.adapters.utils.MoviesDiffUtil
 import com.karas.movies.presentation.adapters.viewholders.MovieItemViewHolder
-import com.karas.movies.presentation.data.pojo.MovieModel
 
 class MoviesListAdapter(private val context: Context) : RecyclerView.Adapter<MovieItemViewHolder>(){
 
-    private var movies = arrayListOf<MovieModel>()
+    private var movies = arrayListOf<MovieData>()
     private lateinit var binding: MovieItemBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemViewHolder {
@@ -28,11 +28,14 @@ class MoviesListAdapter(private val context: Context) : RecyclerView.Adapter<Mov
         return movies.size
     }
 
-    fun updateList(newMoviesList: List<MovieModel>) {
+    fun updateList(newMoviesList: List<MovieData>) {
+        val newMovies = arrayListOf<MovieData>()
+        newMovies.addAll(movies)
+        newMovies.addAll(newMoviesList)
         val moviesDiffUtil = MoviesDiffUtil(movies, newMoviesList)
         val diffResult = DiffUtil.calculateDiff(moviesDiffUtil)
         this.movies.clear()
-        this.movies.addAll(newMoviesList)
+        this.movies.addAll(newMovies)
         diffResult.dispatchUpdatesTo(this)
     }
 }

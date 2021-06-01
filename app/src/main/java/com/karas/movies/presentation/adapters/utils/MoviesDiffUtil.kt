@@ -1,9 +1,9 @@
 package com.karas.movies.presentation.adapters.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.karas.movies.presentation.data.pojo.MovieModel
+import com.karas.movies.db.pojo.MovieData
 
-class MoviesDiffUtil(private val oldList:List<MovieModel>, private val newList: List<MovieModel>) : DiffUtil.Callback() {
+class MoviesDiffUtil(private val oldList:List<MovieData>, private val newList: List<MovieData>) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldList.size
     }
@@ -21,6 +21,6 @@ class MoviesDiffUtil(private val oldList:List<MovieModel>, private val newList: 
                 oldList[oldItemPosition].title == newList[newItemPosition].title &&
                 oldList[oldItemPosition].description == newList[newItemPosition].description &&
                 oldList[oldItemPosition].imagePath == newList[newItemPosition].imagePath &&
-                oldList[oldItemPosition].rate == newList[newItemPosition].rate
+                oldList[oldItemPosition].rank == newList[newItemPosition].rank
     }
 }
