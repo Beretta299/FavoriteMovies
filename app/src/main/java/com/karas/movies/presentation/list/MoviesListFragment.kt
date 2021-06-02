@@ -51,5 +51,6 @@ class MoviesListFragment : BaseFragment<MovieScreenBinding>(),
 
     override fun onRefresh() {
         binding.srlSwipeLayout.isRefreshing = false
+        viewModel.refreshList()
     }
 }

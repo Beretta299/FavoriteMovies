@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.karas.movies.databinding.MovieItemBinding
-import com.karas.movies.db.pojo.MovieData
+import com.karas.movies.pojo.MovieData
 import com.karas.movies.presentation.adapters.utils.MoviesDiffUtil
 import com.karas.movies.presentation.adapters.viewholders.MovieItemViewHolder
 

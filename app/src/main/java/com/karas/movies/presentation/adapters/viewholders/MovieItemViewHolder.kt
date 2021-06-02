@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import com.karas.movies.R
 import com.karas.movies.databinding.MovieItemBinding
-import com.karas.movies.db.pojo.MovieData
+import com.karas.movies.pojo.MovieData
 import com.squareup.picasso.Picasso
 
 class MovieItemViewHolder(private val movieItemBinding: MovieItemBinding, private val context: Context) : RecyclerView.ViewHolder(movieItemBinding.root) {

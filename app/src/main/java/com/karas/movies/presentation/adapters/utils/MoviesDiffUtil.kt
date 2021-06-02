@@ -1,7 +1,7 @@
 package com.karas.movies.presentation.adapters.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.karas.movies.db.pojo.MovieData
+import com.karas.movies.pojo.MovieData
 
 class MoviesDiffUtil(private val oldList:List<MovieData>, private val newList: List<MovieData>) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {

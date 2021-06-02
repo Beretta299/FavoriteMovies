@@ -12,7 +12,15 @@ class MovieRepositoryImpl(private val moviesDao: MoviesDao) : MovieRepository{
         return moviesDao.loadNextMoviesPortion(limit, offset)
     }
 
+    override suspend fun insertMovies(movies: List<MovieEntity>) {
+        moviesDao.insertMovie(*movies.toTypedArray())
+    }
+
     override suspend fun getMoviesCount(): Int {
         return moviesDao.getMoviesCount()
+    }
+
+    override suspend fun rateMovie(movieID: Int, isLiked: Boolean) {
+        moviesDao.rateMovie(movieID, isLiked)
     }
 }

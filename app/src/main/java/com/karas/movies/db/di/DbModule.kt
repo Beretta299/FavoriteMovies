@@ -29,6 +29,8 @@ class DbModule {
             AppDatabase::class.java,
             dbName)
 
+        dbBuilder.fallbackToDestructiveMigration()
+
         return dbBuilder.build()
     }
 

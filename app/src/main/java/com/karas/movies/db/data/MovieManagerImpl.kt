@@ -1,8 +1,7 @@
 package com.karas.movies.db.data
 
 import com.karas.movies.db.model.MovieEntity
-import com.karas.movies.db.pojo.MovieData
-import timber.log.Timber
+import com.karas.movies.pojo.MovieData
 
 class MovieManagerImpl(private val movieRepository: MovieRepository) : MovieManager {
     private val STEP = 50
@@ -19,15 +18,27 @@ class MovieManagerImpl(private val movieRepository: MovieRepository) : MovieMana
         return movieDataList
     }
 
+    override suspend fun insertMovies(movies: List<MovieData>) {
+        val entities = arrayListOf<MovieEntity>()
+        for(movie in movies) {
+            entities.add(movie.toMovieEntity())
+        }
+        movieRepository.insertMovies(entities)
+    }
+
     override suspend fun getMoviesCount(): Int {
         return movieRepository.getMoviesCount()
     }
 
+    override suspend fun rateMovie(movieID: Int, isLiked: Boolean) {
+        movieRepository.rateMovie(movieID, isLiked)
+    }
+
     private fun MovieEntity.toMovieData(): MovieData {
-        return MovieData(id?:-1, title, description, rank, imagePath)
+        return MovieData(id?:-1, title, description, rank, imagePath, releaseDate, isLiked)
     }
 
     private fun MovieData.toMovieEntity(): MovieEntity {
-        return MovieEntity(id, title, description, rank, imagePath)
+        return MovieEntity(id, title, description, rank, imagePath, releaseDate, isLiked)
     }
 }

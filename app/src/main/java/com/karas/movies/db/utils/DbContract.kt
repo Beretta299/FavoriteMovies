@@ -9,5 +9,7 @@ object DbContract {
         const val COLUMN_DESCRIPTION = "description"
         const val COLUMN_RANK = "rank"
         const val COLUMN_ICON_PATH = "icon_path"
+        const val COLUMN_RELEASE_DATE = "release_date"
+        const val COLUMN_IS_LIKED = "is_liked"
     }
 }
