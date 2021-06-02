@@ -9,7 +9,13 @@ interface MovieManager {
 
     suspend fun loadNextPortion(currentItemsAmount: Int): List<MovieData>
 
+    suspend fun getSavedMovies(): List<MovieData>
+
     suspend fun getMoviesCount(): Int
 
     suspend fun rateMovie(movieID: Int, isLiked: Boolean)
+
+    suspend fun getRatedMovies(): List<MovieData>
+
+    suspend fun checkIsMovieLiked(movieModel: MovieData): Boolean
 }

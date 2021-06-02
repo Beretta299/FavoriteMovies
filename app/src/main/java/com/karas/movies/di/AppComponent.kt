@@ -6,7 +6,7 @@ import com.karas.movies.di.annotations.ApplicationContext
 import com.karas.movies.di.modules.AppModule
 import com.karas.movies.di.modules.FactoryModule
 import com.karas.movies.presentation.di.MainModule
-import com.karas.movies.presentation.list.di.MoviesListModule
+import com.karas.movies.presentation.list.di.ListModule
 import com.karas.movies.rest.di.RestModule
 import dagger.Component
 import javax.inject.Singleton
@@ -16,7 +16,7 @@ import javax.inject.Singleton
     FactoryModule::class,
     MainModule::class,
     DbModule::class,
-    MoviesListModule::class,
+    ListModule::class,
     RestModule::class
 ])
 @Singleton

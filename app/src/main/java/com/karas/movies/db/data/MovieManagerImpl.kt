@@ -12,7 +12,15 @@ class MovieManagerImpl(private val movieRepository: MovieRepository) : MovieMana
 
     override suspend fun loadNextPortion(currentItemsAmount: Int): List<MovieData> {
         val movieDataList = arrayListOf<MovieData>()
-        for(entity in movieRepository.loadNextPortion(STEP, currentItemsAmount)) {
+        for(entity in movieRepository.loadNextPortion(STEP, 0)) {
+            movieDataList.add(entity.toMovieData())
+        }
+        return movieDataList
+    }
+
+    override suspend fun getSavedMovies(): List<MovieData> {
+        val movieDataList = arrayListOf<MovieData>()
+        for(entity in movieRepository.getSavedMovies()) {
             movieDataList.add(entity.toMovieData())
         }
         return movieDataList
@@ -32,6 +40,18 @@ class MovieManagerImpl(private val movieRepository: MovieRepository) : MovieMana
 
     override suspend fun rateMovie(movieID: Int, isLiked: Boolean) {
         movieRepository.rateMovie(movieID, isLiked)
+    }
+
+    override suspend fun getRatedMovies(): List<MovieData> {
+        val movieData = arrayListOf<MovieData>()
+        for(movie in movieRepository.getRatedMovies()){
+            movieData.add(movie.toMovieData())
+        }
+        return movieData
+    }
+
+    override suspend fun checkIsMovieLiked(movieModel: MovieData): Boolean {
+        return movieRepository.checkIsMovieLiked(movieModel)
     }
 
     private fun MovieEntity.toMovieData(): MovieData {

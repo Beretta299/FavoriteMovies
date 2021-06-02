@@ -13,14 +13,14 @@ class MoviesDiffUtil(private val oldList:List<MovieData>, private val newList: L
     }
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].id == newList[newItemPosition].id
+        return oldList[oldItemPosition].imagePath == newList[newItemPosition].imagePath
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].id == newList[newItemPosition].id &&
-                oldList[oldItemPosition].title == newList[newItemPosition].title &&
+        return oldList[oldItemPosition].title == newList[newItemPosition].title &&
                 oldList[oldItemPosition].description == newList[newItemPosition].description &&
                 oldList[oldItemPosition].imagePath == newList[newItemPosition].imagePath &&
-                oldList[oldItemPosition].rank == newList[newItemPosition].rank
+                oldList[oldItemPosition].rank == newList[newItemPosition].rank&&
+                oldList[oldItemPosition].isLiked == newList[newItemPosition].isLiked
     }
 }

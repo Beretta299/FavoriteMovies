@@ -6,12 +6,20 @@ import com.karas.movies.rest.model.MovieRestModel
 import timber.log.Timber
 
 class RestManagerImpl(private val restRepository: RestRepository, private val movieManager: MovieManager) : RestManager {
-    override suspend fun loadNewDataPortion(pageNumber: Int) {
+    private var currentPage = 0
+    override suspend fun loadNewDataPortion(): List<MovieData> {
         val movieDataList = arrayListOf<MovieData>()
-        for(movie in restRepository.getPopularMovies(1).body()?.results?: listOf()) {
-            movieDataList.add(movie.toMovieModel())
+        currentPage++
+        for(movie in restRepository.getPopularMovies(currentPage).body()?.results?: listOf()) {
+            val movieModel = movie.toMovieModel()
+            movieModel.isLiked = movieManager.checkIsMovieLiked(movieModel)
+            movieDataList.add(movieModel)
         }
-        movieManager.insertMovies(movieDataList)
+        return movieDataList
+    }
+
+    override fun resetList() {
+        currentPage = 0
     }
 
     private fun MovieRestModel.toMovieModel() :MovieData{
