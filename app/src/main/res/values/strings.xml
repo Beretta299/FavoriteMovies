@@ -6,4 +6,5 @@
     <string name="movie_card_rate_holder">Rating: %s</string>
     <string name="favourites">FAVORITES</string>
     <string name="movies">MOVIES</string>
+    <string name="movie_share_prefix">Hey! Checkout this new %s movie</string>
 </resources>
