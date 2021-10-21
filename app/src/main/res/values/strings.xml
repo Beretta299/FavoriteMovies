@@ -4,4 +4,6 @@
     <string name="movie_card_like_action">Like</string>
     <string name="movie_card_unlike_action">Remove</string>
     <string name="movie_card_rate_holder">Rating: %s</string>
+    <string name="favourites">FAVORITES</string>
+    <string name="movies">MOVIES</string>
 </resources>
