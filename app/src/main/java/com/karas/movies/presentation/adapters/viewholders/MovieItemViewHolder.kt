@@ -1,6 +1,8 @@
 package com.karas.movies.presentation.adapters.viewholders
 
 import android.content.Context
+import android.content.Intent
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.karas.movies.R
 import com.karas.movies.databinding.MovieItemBinding
@@ -23,6 +25,16 @@ class MovieItemViewHolder(private val movieItemBinding: MovieItemBinding, privat
                 movieModel.isLiked = !movieModel.isLiked
                 rateMovieListener.rateMovie(movieModel)
                 bFavoriteAction.text = if(movieModel.isLiked) context.getString(R.string.movie_card_unlike_action) else context.getString(R.string.movie_card_like_action)
+            }
+
+            bShareAction.setOnClickListener {
+                val sendIntent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, String.format(context.getString(R.string.movie_share_prefix), movieModel.title))
+                    type = "text/plain"
+                }
+                val shareIntent = Intent.createChooser(sendIntent, "Share via")
+                context.startActivity(shareIntent)
             }
 
             Picasso.get()
